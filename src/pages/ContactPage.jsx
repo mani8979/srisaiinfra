@@ -136,7 +136,7 @@ export default function ContactPage() {
               </div>
 
               {/* Direct Phone Box */}
-              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start space-x-4">
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start space-x-4 card-hover-lift">
                 <div className="p-3 rounded-xl bg-emerald-100 text-emerald-700 shrink-0">
                   <Phone className="w-6 h-6 text-emerald-700" />
                 </div>
@@ -157,7 +157,7 @@ export default function ContactPage() {
               </div>
 
               {/* WhatsApp Box */}
-              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start space-x-4">
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start space-x-4 card-hover-lift">
                 <div className="p-3 rounded-xl bg-emerald-950/20 text-emerald-600 shrink-0">
                   <MessageCircle className="w-6 h-6 text-emerald-600" />
                 </div>

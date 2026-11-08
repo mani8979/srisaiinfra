@@ -330,7 +330,7 @@ export default function Navbar({ onOpenQuote }) {
               <button
                 type="button"
                 onClick={onOpenQuote}
-                className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-brand-green-dark to-brand-green-emerald hover:from-brand-green hover:to-emerald-500 rounded-lg shadow-sm hover:shadow-glow-green transition-all duration-300 transform active:scale-95 border border-emerald-400/30 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-brand-navy cursor-pointer"
+                className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-brand-green-dark to-brand-green-emerald hover:from-brand-green hover:to-emerald-500 rounded-lg shadow-sm hover:shadow-glow-green transition-all duration-300 transform hover:scale-105 active:scale-95 border border-emerald-400/30 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-brand-navy cursor-pointer"
                 aria-label="Request a quotation"
               >
                 <span>Get a Quote</span>

@@ -163,3 +163,137 @@ button, a, input, select, textarea {
   touch-action: manipulation;
 }
 
+/* ==========================================================================
+   1. FADE OUT TO IN EFFECT (Page Transitions, Modals & Components)
+   ========================================================================== */
+
+@keyframes fadeOutToIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.996);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes simpleFade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Smooth route and component entrance ("Fade Out to In") */
+.page-transition {
+  animation: fadeOutToIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+.animate-fadeIn {
+  animation: fadeInScale 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+.animate-fade-in {
+  animation: fadeOutToIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+.animate-simple-fade {
+  animation: simpleFade 0.25s ease-out forwards;
+}
+
+/* ==========================================================================
+   2. TACTILE "MAKE IT A LITTLE BIG" HOVER EFFECT (Buttons, CTAs, Cards)
+   ========================================================================== */
+
+/* Universal tactile micro-interaction for all clickable buttons */
+button:not(:disabled):not(.no-hover-scale),
+.btn-hover-scale,
+.hover-scale {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.22s ease-out,
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease;
+  will-change: transform;
+}
+
+button:not(:disabled):not(.no-hover-scale):hover,
+.btn-hover-scale:hover,
+.hover-scale:hover {
+  transform: scale(1.045);
+}
+
+button:not(:disabled):not(.no-hover-scale):active,
+.btn-hover-scale:active,
+.hover-scale:active {
+  transform: scale(0.96);
+}
+
+/* CTA and Action links styled as buttons */
+a.cta-btn,
+a[class*="px-"][class*="py-"][class*="rounded-"]:not([class*="w-full"]):not([class*="rounded-none"]):not(.no-hover-scale) {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.22s ease-out,
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease;
+  will-change: transform;
+}
+
+a.cta-btn:hover,
+a[class*="px-"][class*="py-"][class*="rounded-"]:not([class*="w-full"]):not([class*="rounded-none"]):not(.no-hover-scale):hover {
+  transform: scale(1.04);
+}
+
+a.cta-btn:active,
+a[class*="px-"][class*="py-"][class*="rounded-"]:not([class*="w-full"]):not([class*="rounded-none"]):not(.no-hover-scale):active {
+  transform: scale(0.96);
+}
+
+/* Interactive Card Lift & "Little Big" Hover */
+.card-hover-lift,
+.interactive-card {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+  will-change: transform;
+}
+
+.card-hover-lift:hover,
+.interactive-card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.card-hover-lift:active,
+.interactive-card:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* Interactive badges and pills */
+.pill-hover-scale {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  will-change: transform;
+}
+
+.pill-hover-scale:hover {
+  transform: scale(1.06);
+}
+
+

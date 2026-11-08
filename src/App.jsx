@@ -91,6 +91,7 @@ function ScrollAndMetaSync() {
 }
 
 function MainApp() {
+  const location = useLocation();
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [quoteInitialService, setQuoteInitialService] = useState('');
   const [selectedProject, setSelectedProject] = useState(null);
@@ -137,65 +138,67 @@ function MainApp() {
       {/* Main Sticky Header */}
       <Navbar onOpenQuote={() => handleOpenQuote()} />
 
-      {/* Main Routed Page Content */}
+      {/* Main Routed Page Content with Smooth Fade Out to In Transition */}
       <main id="main-content" className="flex-1 w-full max-w-full overflow-x-hidden" tabIndex="-1">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                onOpenQuote={handleOpenQuote}
-                onSelectProject={handleSelectProject}
-                onSelectService={handleSelectService}
-              />
-            }
-          />
-          <Route
-            path="/about"
-            element={<AboutPage onOpenQuote={handleOpenQuote} />}
-          />
-          <Route
-            path="/services"
-            element={
-              <ServicesPage
-                onSelectService={handleSelectService}
-                onOpenQuote={handleOpenQuote}
-              />
-            }
-          />
-          <Route
-            path="/projects"
-            element={
-              <ProjectsPage
-                onSelectProject={handleSelectProject}
-                onOpenQuote={handleOpenQuote}
-              />
-            }
-          />
-          <Route
-            path="/clients"
-            element={<ClientsPage onOpenQuote={handleOpenQuote} />}
-          />
-          <Route
-            path="/referrals"
-            element={<ReferralsPage onOpenQuote={handleOpenQuote} />}
-          />
-          <Route
-            path="/contact"
-            element={<ContactPage />}
-          />
-          {/* Catch all / fallback */}
-          <Route
-            path="*"
-            element={
-              <HomePage
-                onOpenQuote={handleOpenQuote}
-                onSelectProject={handleSelectProject}
-                onSelectService={handleSelectService}
-              />
-            }
-          />
-        </Routes>
+        <div key={location.pathname} className="page-transition w-full flex-1">
+          <Routes location={location}>
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  onOpenQuote={handleOpenQuote}
+                  onSelectProject={handleSelectProject}
+                  onSelectService={handleSelectService}
+                />
+              }
+            />
+            <Route
+              path="/about"
+              element={<AboutPage onOpenQuote={handleOpenQuote} />}
+            />
+            <Route
+              path="/services"
+              element={
+                <ServicesPage
+                  onSelectService={handleSelectService}
+                  onOpenQuote={handleOpenQuote}
+                />
+              }
+            />
+            <Route
+              path="/projects"
+              element={
+                <ProjectsPage
+                  onSelectProject={handleSelectProject}
+                  onOpenQuote={handleOpenQuote}
+                />
+              }
+            />
+            <Route
+              path="/clients"
+              element={<ClientsPage onOpenQuote={handleOpenQuote} />}
+            />
+            <Route
+              path="/referrals"
+              element={<ReferralsPage onOpenQuote={handleOpenQuote} />}
+            />
+            <Route
+              path="/contact"
+              element={<ContactPage />}
+            />
+            {/* Catch all / fallback */}
+            <Route
+              path="*"
+              element={
+                <HomePage
+                  onOpenQuote={handleOpenQuote}
+                  onSelectProject={handleSelectProject}
+                  onSelectService={handleSelectService}
+                />
+              }
+            />
+          </Routes>
+        </div>
       </main>
 
       {/* Multi-Column Footer */}

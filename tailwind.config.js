@@ -50,6 +50,25 @@ export default {
         'premium-hover': '0 20px 40px -15px rgba(2, 12, 27, 0.4)',
         'glow-green': '0 0 25px -5px rgba(40, 167, 69, 0.3)',
         'glow-gold': '0 0 25px -5px rgba(212, 175, 55, 0.35)'
+      },
+      animation: {
+        'fade-in': 'fadeOutToIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in-scale': 'fadeInScale 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'subtle-pulse': 'subtlePulse 3s ease-in-out infinite',
+      },
+      keyframes: {
+        fadeOutToIn: {
+          '0%': { opacity: '0', transform: 'translateY(10px) scale(0.995)' },
+          '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+        },
+        fadeInScale: {
+          '0%': { opacity: '0', transform: 'scale(0.96)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        subtlePulse: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.03)' },
+        }
       }
     },
   },

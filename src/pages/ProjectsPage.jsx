@@ -103,7 +103,7 @@ export default function ProjectsPage({ onSelectProject, onOpenQuote }) {
               <div
                 key={project.id}
                 onClick={() => onSelectProject(project)}
-                className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group cursor-pointer"
+                className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group cursor-pointer card-hover-lift"
               >
                 {/* Image Frame */}
                 <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-slate-900">

@@ -75,7 +75,7 @@ export default function ServicesPage({ onSelectService, onOpenQuote }) {
                   ref={isHighlighted ? highlightedRef : null}
                   className={`bg-white rounded-2xl overflow-hidden border ${
                     isHighlighted ? 'border-emerald-500 ring-2 ring-emerald-400 shadow-xl' : 'border-slate-200 shadow-sm hover:shadow-xl'
-                  } transition-all duration-300 flex flex-col group`}
+                  } transition-all duration-300 flex flex-col group card-hover-lift`}
                 >
                   {/* Service Card Image */}
                   <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-slate-900">

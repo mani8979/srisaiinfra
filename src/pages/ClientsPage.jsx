@@ -151,7 +151,7 @@ export default function ClientsPage({ onOpenQuote }) {
             {CLIENT_SECTORS.map((sector, idx) => (
               <div
                 key={idx}
-                className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-3"
+                className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-3 card-hover-lift"
               >
                 <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center">
                   {sectorIcons[idx % sectorIcons.length]}

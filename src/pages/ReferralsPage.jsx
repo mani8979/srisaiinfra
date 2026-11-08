@@ -154,7 +154,7 @@ export default function ReferralsPage({ onOpenQuote }) {
               {REFERRALS_DATA.direct.map((dir, i) => (
                 <div
                   key={i}
-                  className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-emerald-500/50 transition-all flex flex-col justify-between"
+                  className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-emerald-500/50 transition-all flex flex-col justify-between card-hover-lift"
                 >
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2 text-emerald-700 font-bold text-sm">
@@ -190,7 +190,7 @@ export default function ReferralsPage({ onOpenQuote }) {
               {REFERRALS_DATA.indirect.map((indir, i) => (
                 <div
                   key={i}
-                  className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3"
+                  className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3 card-hover-lift"
                 >
                   <div className="flex items-center space-x-2 text-slate-900 font-bold text-base">
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>

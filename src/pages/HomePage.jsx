@@ -198,7 +198,7 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {COMPANY_INFO.stats.map((stat, i) => (
-              <div key={i} className="text-center sm:text-left space-y-1 p-3 rounded-xl hover:bg-slate-50 transition-colors">
+              <div key={i} className="text-center sm:text-left space-y-1 p-3 rounded-xl hover:bg-slate-50 transition-all duration-300 hover:scale-105 cursor-default">
                 <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-heading text-brand-navy tracking-tight block">
                   {stat.value}
                 </span>
@@ -364,7 +364,7 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
             {featuredServices.map((service) => (
               <div
                 key={service.id}
-                className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+                className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group card-hover-lift"
               >
                 {/* Service Card Image */}
                 <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-900">
@@ -519,7 +519,7 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
               <div
                 key={p.id}
                 onClick={() => onSelectProject(p)}
-                className="bg-slate-900/90 rounded-2xl overflow-hidden border border-white/10 shadow-xl group cursor-pointer hover:border-emerald-400/50 transition-all duration-300"
+                className="bg-slate-900/90 rounded-2xl overflow-hidden border border-white/10 shadow-xl group cursor-pointer hover:border-emerald-400/50 transition-all duration-300 card-hover-lift"
               >
                 <div className="relative h-60 sm:h-64 w-full overflow-hidden">
                   <img
