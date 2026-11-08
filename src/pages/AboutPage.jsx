@@ -12,39 +12,53 @@ import {
   Award
 } from 'lucide-react';
 import { COMPANY_INFO, COMPANY_JOURNEY } from '../data/companyData';
+import { ScrollFadeSection, ScrollReveal, StaggerContainer, StaggerItem } from '../components/animation';
 
 export default function AboutPage({ onOpenQuote }) {
   return (
     <div className="space-y-0">
       
       {/* Page Header Banner */}
-      <section className="bg-brand-navy text-white py-14 sm:py-20 relative overflow-hidden border-b border-white/10">
+      <ScrollFadeSection
+        as="section"
+        isHero={true}
+        className="bg-brand-navy text-white py-14 sm:py-20 relative overflow-hidden border-b border-white/10"
+      >
         <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none" />
         <div className="absolute -top-24 right-0 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/70 border border-emerald-500/30 px-3.5 py-1.5 rounded-full mb-4">
-            <Building2 className="w-4 h-4 text-emerald-400" />
-            <span>Established 2017 &bull; Architectural Solutions</span>
-          </div>
+          <ScrollReveal direction="down" delay={0.05}>
+            <div className="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/70 border border-emerald-500/30 px-3.5 py-1.5 rounded-full mb-4">
+              <Building2 className="w-4 h-4 text-emerald-400" />
+              <span>Established 2017 &bull; Architectural Solutions</span>
+            </div>
+          </ScrollReveal>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white tracking-tight">
-            About Sai Sri Infra Solutions
-          </h1>
+          <ScrollReveal direction="up" delay={0.1}>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white tracking-tight">
+              About Sai Sri Infra Solutions
+            </h1>
+          </ScrollReveal>
 
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mt-4 leading-relaxed">
-            Delivering precision architectural aluminium, ACP cladding, structural glass fixing, and commercial spatial solutions with unwavering dedication to customer excellence.
-          </p>
+          <ScrollReveal direction="up" delay={0.18}>
+            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mt-4 leading-relaxed">
+              Delivering precision architectural aluminium, ACP cladding, structural glass fixing, and commercial spatial solutions with unwavering dedication to customer excellence.
+            </p>
+          </ScrollReveal>
         </div>
-      </section>
+      </ScrollFadeSection>
 
       {/* Main Company Story & Motto Section */}
-      <section className="py-16 sm:py-20 bg-white">
+      <ScrollFadeSection
+        as="section"
+        className="py-16 sm:py-20 bg-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Story text (7 cols) */}
-            <div className="lg:col-span-7 space-y-6">
+            <ScrollReveal direction="right" delay={0.1} className="lg:col-span-7 space-y-6">
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-3 py-1 rounded-md">
                 Company Inception & Background
               </span>
@@ -85,10 +99,10 @@ export default function AboutPage({ onOpenQuote }) {
                   <span className="text-xs font-semibold text-slate-600 uppercase">Completed Engagements</span>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Visual Logo / Presentation Slide Tribute (5 cols) */}
-            <div className="lg:col-span-5 space-y-6">
+            <ScrollReveal direction="left" delay={0.15} className="lg:col-span-5 space-y-6">
               <div className="relative rounded-2xl overflow-hidden bg-slate-900 border-2 border-emerald-500/20 shadow-2xl p-6 text-center space-y-4">
                 <div className="h-28 w-auto flex items-center justify-center mx-auto">
                   <img
@@ -135,16 +149,19 @@ export default function AboutPage({ onOpenQuote }) {
                   </button>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
           </div>
         </div>
-      </section>
+      </ScrollFadeSection>
 
       {/* Timeline / Journey Section */}
-      <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200">
+      <ScrollFadeSection
+        as="section"
+        className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200"
+      >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <ScrollReveal direction="up" className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-3 py-1 rounded-md">
               Growth & Milestones
             </span>
@@ -154,15 +171,17 @@ export default function AboutPage({ onOpenQuote }) {
             <p className="text-sm sm:text-base text-slate-600 mt-1">
               Tracing our expansion from facility services to premier architectural aluminium and facade solutions.
             </p>
-          </div>
+          </ScrollReveal>
 
           {/* Timeline Cards */}
           <div className="space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-1/2 before:-translate-x-1/2 before:h-full before:w-0.5 before:bg-slate-300">
             {COMPANY_JOURNEY.map((step, index) => {
               const isEven = index % 2 === 0;
               return (
-                <div
+                <ScrollReveal
                   key={index}
+                  direction={isEven ? 'right' : 'left'}
+                  delay={0.08 * index}
                   className={`relative flex flex-col sm:flex-row items-start ${
                     isEven ? 'sm:flex-row-reverse' : ''
                   }`}
@@ -174,7 +193,7 @@ export default function AboutPage({ onOpenQuote }) {
 
                   {/* Card Content */}
                   <div className="ml-12 sm:ml-0 sm:w-1/2 sm:px-6">
-                    <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md border border-slate-200 transition-all">
+                    <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md border border-slate-200 transition-all card-hover-lift">
                       <span className="inline-block px-2.5 py-0.5 text-xs font-bold rounded-full bg-emerald-100 text-emerald-800 mb-2">
                         {step.year}
                       </span>
@@ -186,17 +205,20 @@ export default function AboutPage({ onOpenQuote }) {
                       </p>
                     </div>
                   </div>
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
         </div>
-      </section>
+      </ScrollFadeSection>
 
       {/* Values & Quality Commitment */}
-      <section className="py-16 sm:py-20 bg-white border-t border-slate-200">
+      <ScrollFadeSection
+        as="section"
+        className="py-16 sm:py-20 bg-white border-t border-slate-200"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <ScrollReveal direction="up" className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-3 py-1 rounded-md">
               Core Principles
             </span>
@@ -206,10 +228,10 @@ export default function AboutPage({ onOpenQuote }) {
             <p className="text-sm sm:text-base text-slate-600 mt-1">
               Every project is measured, fabricated, and installed to meet rigorous commercial architectural standards.
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.12}>
+            <StaggerItem scale={true} className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 card-hover-lift">
               <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
                 <Target className="w-6 h-6" />
               </div>
@@ -219,9 +241,9 @@ export default function AboutPage({ onOpenQuote }) {
               <p className="text-sm text-slate-600 leading-relaxed">
                 Millimeter accuracy in aluminium frame fabrication, laser-aligned ACP panel groove joints, and secure mechanical anchors designed for high wind load.
               </p>
-            </div>
+            </StaggerItem>
 
-            <div className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <StaggerItem scale={true} className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 card-hover-lift">
               <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
                 <ShieldCheck className="w-6 h-6" />
               </div>
@@ -231,9 +253,9 @@ export default function AboutPage({ onOpenQuote }) {
               <p className="text-sm text-slate-600 leading-relaxed">
                 We utilize verified architectural grade aluminium alloys, premium PVDF-coated ACP sheets, and certified toughened safety glass with structural sealants.
               </p>
-            </div>
+            </StaggerItem>
 
-            <div className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <StaggerItem scale={true} className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 card-hover-lift">
               <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
                 <Sparkles className="w-6 h-6" />
               </div>
@@ -243,11 +265,11 @@ export default function AboutPage({ onOpenQuote }) {
               <p className="text-sm text-slate-600 leading-relaxed">
                 Living our motto &ldquo;Serve All to the BEST&rdquo; by maintaining transparent communication, honoring project deadlines, and delivering lasting architectural value.
               </p>
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
 
           {/* Bottom CTA */}
-          <div className="mt-12 text-center">
+          <ScrollReveal direction="up" delay={0.2} className="mt-12 text-center">
             <Link
               to="/projects"
               className="inline-flex items-center px-6 py-3 text-sm font-semibold text-white bg-brand-navy hover:bg-brand-navy-light rounded-xl shadow-md transition-colors mr-3"
@@ -262,12 +284,11 @@ export default function AboutPage({ onOpenQuote }) {
             >
               <span>Request Consultation</span>
             </button>
-          </div>
+          </ScrollReveal>
 
         </div>
-      </section>
+      </ScrollFadeSection>
 
     </div>
   );
 }
-

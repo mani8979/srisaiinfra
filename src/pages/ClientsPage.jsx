@@ -13,45 +13,59 @@ import {
   Landmark
 } from 'lucide-react';
 import { COMPANY_INFO, CLIENT_SECTORS } from '../data/companyData';
+import { ScrollFadeSection, ScrollReveal, StaggerContainer, StaggerItem } from '../components/animation';
 
 export default function ClientsPage({ onOpenQuote }) {
   const sectorIcons = [
-    <Briefcase className="w-6 h-6 text-emerald-600" />,
-    <Store className="w-6 h-6 text-emerald-600" />,
-    <Hotel className="w-6 h-6 text-emerald-600" />,
-    <Activity className="w-6 h-6 text-emerald-600" />,
-    <ShoppingBag className="w-6 h-6 text-emerald-600" />,
-    <Landmark className="w-6 h-6 text-emerald-600" />
+    <Briefcase key="briefcase" className="w-6 h-6 text-emerald-600" />,
+    <Store key="store" className="w-6 h-6 text-emerald-600" />,
+    <Hotel key="hotel" className="w-6 h-6 text-emerald-600" />,
+    <Activity key="activity" className="w-6 h-6 text-emerald-600" />,
+    <ShoppingBag key="bag" className="w-6 h-6 text-emerald-600" />,
+    <Landmark key="landmark" className="w-6 h-6 text-emerald-600" />
   ];
 
   return (
     <div className="space-y-0">
       
       {/* Header Banner */}
-      <section className="bg-brand-navy text-white py-14 sm:py-20 relative overflow-hidden border-b border-white/10">
+      <ScrollFadeSection
+        as="section"
+        isHero={true}
+        className="bg-brand-navy text-white py-14 sm:py-20 relative overflow-hidden border-b border-white/10"
+      >
         <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none" />
         <div className="absolute -top-20 right-0 sm:right-10 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <span className="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/70 border border-emerald-500/30 mb-4">
-            Commercial Client Relations &bull; Slide 14
-          </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white tracking-tight">
-            Our Commercial Clients & Sectors
-          </h1>
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mt-4 leading-relaxed">
-            Delivering architectural precision, durable ACP facade finishes, and modular office partitions to prominent commercial enterprises across South India.
-          </p>
+          <ScrollReveal direction="down" delay={0.05}>
+            <span className="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/70 border border-emerald-500/30 mb-4">
+              Commercial Client Relations &bull; Slide 14
+            </span>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.1}>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white tracking-tight">
+              Our Commercial Clients & Sectors
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.18}>
+            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mt-4 leading-relaxed">
+              Delivering architectural precision, durable ACP facade finishes, and modular office partitions to prominent commercial enterprises across South India.
+            </p>
+          </ScrollReveal>
         </div>
-      </section>
+      </ScrollFadeSection>
 
       {/* Slide 14 Growth & Performance Chart Section */}
-      <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
+      <ScrollFadeSection
+        as="section"
+        className="py-16 sm:py-20 bg-white border-b border-slate-200"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left: Text & Analysis (6 cols) */}
-            <div className="lg:col-span-6 space-y-6">
+            <ScrollReveal direction="right" delay={0.1} className="lg:col-span-6 space-y-6">
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-3 py-1 rounded-md">
                 Verified Commercial Track Record
               </span>
@@ -65,7 +79,7 @@ export default function ClientsPage({ onOpenQuote }) {
               </p>
 
               <div className="space-y-3">
-                <div className="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <div className="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200 card-hover-lift">
                   <div className="p-2 rounded-lg bg-emerald-100 text-emerald-700 shrink-0">
                     <TrendingUp className="w-5 h-5" />
                   </div>
@@ -77,7 +91,7 @@ export default function ClientsPage({ onOpenQuote }) {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <div className="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200 card-hover-lift">
                   <div className="p-2 rounded-lg bg-emerald-100 text-emerald-700 shrink-0">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
@@ -100,10 +114,10 @@ export default function ClientsPage({ onOpenQuote }) {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </button>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right: Slide 14 Genuine Chart Image Display (6 cols) */}
-            <div className="lg:col-span-6">
+            <ScrollReveal direction="left" delay={0.15} className="lg:col-span-6">
               <div className="relative rounded-2xl overflow-hidden bg-slate-900 border-2 border-slate-200 shadow-xl p-3 sm:p-5">
                 <div className="flex items-center justify-between pb-3 px-2 border-b border-white/10 text-xs">
                   <span className="font-semibold text-emerald-400 uppercase tracking-wider">
@@ -126,16 +140,19 @@ export default function ClientsPage({ onOpenQuote }) {
                   * Original commercial volume and client engagement chart from company presentation, documenting progressive expansion from 2020 through 2024.
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
           </div>
         </div>
-      </section>
+      </ScrollFadeSection>
 
       {/* Commercial Sectors Served */}
-      <section className="py-16 sm:py-20 bg-slate-50">
+      <ScrollFadeSection
+        as="section"
+        className="py-16 sm:py-20 bg-slate-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <ScrollReveal direction="up" className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-3 py-1 rounded-md">
               Industry Verticals
             </span>
@@ -145,12 +162,13 @@ export default function ClientsPage({ onOpenQuote }) {
             <p className="text-sm sm:text-base text-slate-600 mt-1">
               Tailored architectural solutions engineered to the specific operational, acoustic, and aesthetic needs of each industry.
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.1}>
             {CLIENT_SECTORS.map((sector, idx) => (
-              <div
+              <StaggerItem
                 key={idx}
+                scale={true}
                 className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-3 card-hover-lift"
               >
                 <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center">
@@ -166,22 +184,21 @@ export default function ClientsPage({ onOpenQuote }) {
                   <CheckCircle2 className="w-3.5 h-3.5 mr-1" />
                   <span>Verified Project Experience</span>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
           {/* Genuine Note Banner */}
-          <div className="mt-12 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs sm:text-sm flex items-start space-x-3">
+          <ScrollReveal direction="up" delay={0.2} className="mt-12 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs sm:text-sm flex items-start space-x-3">
             <ShieldCheck className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
             <div className="leading-relaxed">
               <strong className="block text-amber-950 font-bold mb-0.5">Corporate Notice on Client Representation:</strong>
               Sai Sri Infra Solutions works with both private and enterprise commercial entities. In accordance with strict ethical standards, client company logos are presented only upon formal corporate confirmation. Contact us for direct reference projects in your sector.
             </div>
-          </div>
+          </ScrollReveal>
         </div>
-      </section>
+      </ScrollFadeSection>
 
     </div>
   );
 }
-

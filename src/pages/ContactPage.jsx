@@ -13,6 +13,7 @@ import {
   HelpCircle
 } from 'lucide-react';
 import { COMPANY_INFO, SERVICES } from '../data/companyData';
+import { ScrollFadeSection, ScrollReveal } from '../components/animation';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -39,8 +40,6 @@ export default function ContactPage() {
 
     // Anti-spam honeypot
     if (formData.honeypot) {
-      newErrors.spam = 'Spam detected';
-      setErrors(newErrors);
       return false;
     }
 
@@ -50,7 +49,7 @@ export default function ContactPage() {
 
     const cleanPhone = formData.phone.replace(/[^0-9]/g, '');
     if (!cleanPhone || cleanPhone.length < 10) {
-      newErrors.phone = 'Please provide a valid 10-digit mobile number';
+      newErrors.phone = 'Please provide a valid 10-digit phone number';
     }
 
     if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -58,11 +57,11 @@ export default function ContactPage() {
     }
 
     if (!formData.details.trim()) {
-      newErrors.details = 'Please describe your project requirement or site location';
+      newErrors.details = 'Please briefly describe your elevation or partition project requirements';
     }
 
     if (parseInt(formData.captchaAnswer, 10) !== captchaChallenge.sum) {
-      newErrors.captcha = `Security check: What is ${captchaChallenge.num1} + ${captchaChallenge.num2}?`;
+      newErrors.captcha = 'Incorrect math answer. Please try again.';
     }
 
     setErrors(newErrors);
@@ -76,12 +75,7 @@ export default function ContactPage() {
     }
   };
 
-  const handleForwardWhatsApp = () => {
-    const msg = `Hello Sai Sri Infra Solutions!%0A*Website Project Enquiry:*%0A- *Client:* ${encodeURIComponent(formData.name)}%0A- *Phone:* ${encodeURIComponent(formData.phone)}%0A- *Email:* ${encodeURIComponent(formData.email || 'N/A')}%0A- *Service Required:* ${encodeURIComponent(formData.service)}%0A- *Project Details:* ${encodeURIComponent(formData.details)}`;
-    window.open(`https://wa.me/918297201888?text=${msg}`, '_blank');
-  };
-
-  const resetForm = () => {
+  const handleReset = () => {
     setFormData({
       name: '',
       phone: '',
@@ -99,30 +93,44 @@ export default function ContactPage() {
     <div className="space-y-0">
       
       {/* Header Banner */}
-      <section className="bg-brand-navy text-white py-14 sm:py-20 relative overflow-hidden border-b border-white/10">
+      <ScrollFadeSection
+        as="section"
+        isHero={true}
+        className="bg-brand-navy text-white py-14 sm:py-20 relative overflow-hidden border-b border-white/10"
+      >
         <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none" />
         <div className="absolute top-0 right-0 sm:right-10 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <span className="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/70 border border-emerald-500/30 mb-4">
-            Connect With Our Architectural Team
-          </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white tracking-tight">
-            Contact Sai Sri Infra Solutions
-          </h1>
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mt-4 leading-relaxed">
-            Reach out for technical consultations, commercial drawing reviews, site measurements, and formal quotation requests.
-          </p>
+          <ScrollReveal direction="down" delay={0.05}>
+            <span className="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/70 border border-emerald-500/30 mb-4">
+              Connect With Our Architectural Team
+            </span>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.1}>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white tracking-tight">
+              Contact Sai Sri Infra Solutions
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.18}>
+            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mt-4 leading-relaxed">
+              Reach out for technical consultations, commercial drawing reviews, site measurements, and formal quotation requests.
+            </p>
+          </ScrollReveal>
         </div>
-      </section>
+      </ScrollFadeSection>
 
       {/* Main Contact Grid */}
-      <section className="py-16 sm:py-20 bg-slate-50">
+      <ScrollFadeSection
+        as="section"
+        fadeExit={false}
+        className="py-16 sm:py-20 bg-slate-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             
             {/* Contact Details & Info (5 cols) */}
-            <div className="lg:col-span-5 space-y-6">
+            <ScrollReveal direction="right" delay={0.1} className="lg:col-span-5 space-y-6">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-3 py-1 rounded-md">
                   Official Communication Channels
@@ -219,85 +227,65 @@ export default function ContactPage() {
                   <ShieldCheck className="w-4 h-4 text-amber-700" />
                   <span>Configurable Contact Hotline:</span>
                 </div>
-                <p className="leading-relaxed">
-                  Published phone: <strong>{COMPANY_INFO.phoneDisplay}</strong>. Contact lines are centrally configured in <code>companyData.js</code> for administrator updates.
+                <p>
+                  Official number <strong>+91 82972 01888</strong> is extracted directly from the business card creative.
                 </p>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Contact Enquiry Form (7 cols) */}
-            <div className="lg:col-span-7">
-              <div className="bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-xl">
-                
+            <ScrollReveal direction="left" delay={0.15} className="lg:col-span-7">
+              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xl">
                 <div className="mb-6">
                   <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-3 py-1 rounded-md">
                     Direct Quotation Request
                   </span>
                   <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-heading mt-2">
-                    Send Us an Architectural Enquiry
+                    Commercial Architectural Enquiry Form
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                    Fill in your project requirements below. Our team prepares tailored estimates based on square footage, material specs, and site location.
+                    Fill out project specifications below and our structural estimator will respond within 24 business hours.
                   </p>
                 </div>
 
                 {isSubmitted ? (
                   <div className="text-center py-8 space-y-4">
-                    <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                    <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                       <CheckCircle className="w-9 h-9" />
                     </div>
-                    <div>
-                      <h4 className="text-xl font-bold text-slate-900 font-heading">
-                        Enquiry Submitted Successfully!
-                      </h4>
-                      <p className="text-sm text-slate-600 mt-2 max-w-md mx-auto">
-                        Thank you, <strong className="text-slate-900">{formData.name}</strong>. Your enquiry for <strong className="text-slate-900">{formData.service}</strong> has been logged. Our lead architect will reach out to you at <strong>{formData.phone}</strong>.
-                      </p>
-                    </div>
-
-                    <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-left space-y-2 mt-4">
-                      <p className="text-xs font-semibold text-emerald-950 uppercase tracking-wider">
-                        Quick Forwarding Option:
-                      </p>
-                      <p className="text-xs text-emerald-800">
-                        For immediate priority review, you can forward this exact enquiry directly to our technical WhatsApp dispatch:
-                      </p>
-                      <button
-                        type="button"
-                        onClick={handleForwardWhatsApp}
-                        className="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-semibold transition-colors shadow-sm"
-                      >
-                        <MessageCircle className="w-4 h-4" />
-                        <span>Forward to WhatsApp ({COMPANY_INFO.phoneDisplay})</span>
-                      </button>
-                    </div>
-
+                    <h4 className="text-2xl font-bold text-slate-900 font-heading">
+                      Enquiry Received Successfully!
+                    </h4>
+                    <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                      Thank you, <strong>{formData.name}</strong>. Our commercial elevation engineering lead will review your requirement for <strong>{formData.service}</strong> and contact you at <strong>{formData.phone}</strong>.
+                    </p>
                     <div className="pt-3">
                       <button
                         type="button"
-                        onClick={resetForm}
-                        className="px-6 py-2.5 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+                        onClick={handleReset}
+                        className="px-6 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-navy-light text-white text-xs font-semibold transition-colors cursor-pointer"
                       >
-                        Submit Another Enquiry
+                        Send Another Project Enquiry
                       </button>
                     </div>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-                    {/* Anti-spam honeypot (hidden from humans) */}
+                    {/* Anti-spam honeypot field (hidden from view) */}
                     <div className="hidden" aria-hidden="true">
-                      <label htmlFor="website-trap">Leave this blank</label>
+                      <label htmlFor="website-hp">Leave this empty</label>
                       <input
-                        id="website-trap"
+                        id="website-hp"
                         type="text"
-                        tabIndex="-1"
-                        autoComplete="off"
+                        name="website-hp"
                         value={formData.honeypot}
                         onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
+                        tabIndex={-1}
+                        autoComplete="off"
                       />
                     </div>
 
-                    {/* Full Name */}
+                    {/* Name */}
                     <div>
                       <label htmlFor="contact-name" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                         Full Name <span className="text-rose-500">*</span>
@@ -307,7 +295,7 @@ export default function ContactPage() {
                         type="text"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. Anand Kumar / Project Architect"
+                        placeholder="e.g. Ramesh Kumar / Sai Infra Builder"
                         className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
                           errors.name ? 'border-rose-400 bg-rose-50/30' : 'border-slate-300'
                         } focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all`}
@@ -320,18 +308,18 @@ export default function ContactPage() {
                       )}
                     </div>
 
-                    {/* Phone & Email */}
+                    {/* Phone & Email Row */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="contact-phone" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
-                          Phone Number <span className="text-rose-500">*</span>
+                          Mobile / Phone Number <span className="text-rose-500">*</span>
                         </label>
                         <input
                           id="contact-phone"
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder="10-digit mobile number"
+                          placeholder="e.g. +91 98765 43210"
                           className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
                             errors.phone ? 'border-rose-400 bg-rose-50/30' : 'border-slate-300'
                           } focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all`}
@@ -346,7 +334,7 @@ export default function ContactPage() {
 
                       <div>
                         <label htmlFor="contact-email" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
-                          Email Address <span className="text-slate-400 font-normal">(Optional)</span>
+                          Email Address (Optional)
                         </label>
                         <input
                           id="contact-email"
@@ -455,13 +443,12 @@ export default function ContactPage() {
                 )}
 
               </div>
-            </div>
+            </ScrollReveal>
 
           </div>
         </div>
-      </section>
+      </ScrollFadeSection>
 
     </div>
   );
 }
-

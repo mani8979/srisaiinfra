@@ -15,6 +15,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { COMPANY_INFO, REFERRALS_DATA } from '../data/companyData';
+import { ScrollFadeSection, ScrollReveal, StaggerContainer, StaggerItem } from '../components/animation';
 
 export default function ReferralsPage({ onOpenQuote }) {
   const [referralForm, setReferralForm] = useState({
@@ -62,28 +63,41 @@ export default function ReferralsPage({ onOpenQuote }) {
     <div className="space-y-0">
       
       {/* Header Banner */}
-      <section className="bg-brand-navy text-white py-14 sm:py-20 relative overflow-hidden border-b border-white/10">
+      <ScrollFadeSection
+        as="section"
+        isHero={true}
+        className="bg-brand-navy text-white py-14 sm:py-20 relative overflow-hidden border-b border-white/10"
+      >
         <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none" />
         <div className="absolute -top-20 left-0 sm:left-10 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <span className="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/70 border border-emerald-500/30 mb-4">
-            Partnership & Referral Program &bull; Slides 21 & 22
-          </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white tracking-tight">
-            Refer Sai Sri Infra Solutions
-          </h1>
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mt-4 leading-relaxed">
-            Help businesses discover high-precision aluminium facades, ACP cladding, and executive office partitions. We value every introduction and foster long-term partnerships.
-          </p>
+          <ScrollReveal direction="down" delay={0.05}>
+            <span className="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/70 border border-emerald-500/30 mb-4">
+              Partnership & Referral Program &bull; Slides 21 & 22
+            </span>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.1}>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white tracking-tight">
+              Refer Sai Sri Infra Solutions
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.18}>
+            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mt-4 leading-relaxed">
+              Help businesses discover high-precision aluminium facades, ACP cladding, and executive office partitions. We value every introduction and foster long-term partnerships.
+            </p>
+          </ScrollReveal>
         </div>
-      </section>
+      </ScrollFadeSection>
 
       {/* Slide 22: "How You Can Refer Us?" Section */}
-      <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
+      <ScrollFadeSection
+        as="section"
+        className="py-16 sm:py-20 bg-white border-b border-slate-200"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <ScrollReveal direction="up" className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-3 py-1 rounded-md">
               Guidance & Action Points &bull; Slide 22
             </span>
@@ -93,13 +107,14 @@ export default function ReferralsPage({ onOpenQuote }) {
             <p className="text-sm sm:text-base text-slate-600 mt-1">
               Simple, everyday ways our clients, architects, and associates connect us with commercial opportunities.
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8" staggerDelay={0.12}>
             {REFERRALS_DATA.callouts.map((item, idx) => (
-              <div
+              <StaggerItem
                 key={idx}
-                className="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-3 relative overflow-hidden"
+                scale={true}
+                className="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-3 relative overflow-hidden card-hover-lift"
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shrink-0">
@@ -119,20 +134,23 @@ export default function ReferralsPage({ onOpenQuote }) {
                 <p className="text-sm text-slate-600 leading-relaxed pt-1">
                   {item.action}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
-      </section>
+      </ScrollFadeSection>
 
       {/* Slide 21: Direct and Indirect Referral Opportunities */}
-      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
+      <ScrollFadeSection
+        as="section"
+        className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           
           {/* Direct Referrals (8 categories) */}
           <div>
-            <div className="flex items-center space-x-3 mb-6">
+            <ScrollReveal direction="left" className="flex items-center space-x-3 mb-6">
               <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-800">
                 <Building2 className="w-6 h-6" />
               </div>
@@ -144,16 +162,19 @@ export default function ReferralsPage({ onOpenQuote }) {
                   Direct Referrals
                 </h2>
               </div>
-            </div>
+            </ScrollReveal>
 
-            <p className="text-sm text-slate-600 mb-8 max-w-2xl">
-              Commercial projects requiring active structural glass fixing, aluminium framing, ACP sheet facade cladding, and spatial cubicle partitions.
-            </p>
+            <ScrollReveal direction="up" delay={0.1}>
+              <p className="text-sm text-slate-600 mb-8 max-w-2xl">
+                Commercial projects requiring active structural glass fixing, aluminium framing, ACP sheet facade cladding, and spatial cubicle partitions.
+              </p>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" staggerDelay={0.08}>
               {REFERRALS_DATA.direct.map((dir, i) => (
-                <div
+                <StaggerItem
                   key={i}
+                  scale={true}
                   className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-emerald-500/50 transition-all flex flex-col justify-between card-hover-lift"
                 >
                   <div className="space-y-2">
@@ -165,14 +186,14 @@ export default function ReferralsPage({ onOpenQuote }) {
                       {dir.desc}
                     </p>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
 
           {/* Indirect Referrals */}
           <div className="pt-6 border-t border-slate-200">
-            <div className="flex items-center space-x-3 mb-6">
+            <ScrollReveal direction="left" className="flex items-center space-x-3 mb-6">
               <div className="p-2.5 rounded-xl bg-amber-100 text-amber-800">
                 <Users className="w-6 h-6" />
               </div>
@@ -184,12 +205,13 @@ export default function ReferralsPage({ onOpenQuote }) {
                   Indirect Referrals
                 </h2>
               </div>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl" staggerDelay={0.12}>
               {REFERRALS_DATA.indirect.map((indir, i) => (
-                <div
+                <StaggerItem
                   key={i}
+                  scale={true}
                   className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3 card-hover-lift"
                 >
                   <div className="flex items-center space-x-2 text-slate-900 font-bold text-base">
@@ -202,18 +224,22 @@ export default function ReferralsPage({ onOpenQuote }) {
                   <div className="pt-2 text-xs font-semibold text-emerald-700">
                     &bull; Long-term contractor & supply channel collaboration
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
 
         </div>
-      </section>
+      </ScrollFadeSection>
 
       {/* Interactive Referral Submission Form */}
-      <section className="py-16 sm:py-20 bg-white">
+      <ScrollFadeSection
+        as="section"
+        fadeExit={false}
+        className="py-16 sm:py-20 bg-white"
+      >
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-slate-50 rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-xl">
+          <ScrollReveal direction="up" className="bg-slate-50 rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-xl">
             
             <div className="text-center mb-8">
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-3 py-1 rounded-md">
@@ -405,11 +431,10 @@ export default function ReferralsPage({ onOpenQuote }) {
               </form>
             )}
 
-          </div>
+          </ScrollReveal>
         </div>
-      </section>
+      </ScrollFadeSection>
 
     </div>
   );
 }
-
