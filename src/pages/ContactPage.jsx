@@ -25,10 +25,10 @@ export default function ContactPage() {
     captchaAnswer: ''
   });
 
-  const [captchaChallenge] = useState({
-    num1: 4,
-    num2: 3,
-    sum: 7
+  const [captchaChallenge] = useState(() => {
+    const n1 = Math.floor(Math.random() * 8) + 2;
+    const n2 = Math.floor(Math.random() * 7) + 1;
+    return { num1: n1, num2: n2, sum: n1 + n2 };
   });
 
   const [errors, setErrors] = useState({});
@@ -299,10 +299,11 @@ export default function ContactPage() {
 
                     {/* Full Name */}
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                      <label htmlFor="contact-name" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                         Full Name <span className="text-rose-500">*</span>
                       </label>
                       <input
+                        id="contact-name"
                         type="text"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -322,10 +323,11 @@ export default function ContactPage() {
                     {/* Phone & Email */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                        <label htmlFor="contact-phone" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                           Phone Number <span className="text-rose-500">*</span>
                         </label>
                         <input
+                          id="contact-phone"
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -343,10 +345,11 @@ export default function ContactPage() {
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                        <label htmlFor="contact-email" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                           Email Address <span className="text-slate-400 font-normal">(Optional)</span>
                         </label>
                         <input
+                          id="contact-email"
                           type="email"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -366,10 +369,11 @@ export default function ContactPage() {
 
                     {/* Service Required */}
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                      <label htmlFor="contact-service" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                         Service Required <span className="text-rose-500">*</span>
                       </label>
                       <select
+                        id="contact-service"
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                         className="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white transition-all"
@@ -390,10 +394,11 @@ export default function ContactPage() {
 
                     {/* Project Details */}
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                      <label htmlFor="contact-details" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                         Project Details & Site Location <span className="text-rose-500">*</span>
                       </label>
                       <textarea
+                        id="contact-details"
                         rows={3}
                         value={formData.details}
                         onChange={(e) => setFormData({ ...formData, details: e.target.value })}
@@ -412,11 +417,12 @@ export default function ContactPage() {
 
                     {/* Simple Spam Protection Check */}
                     <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                      <label htmlFor="contact-captcha" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                         Security Verification: What is {captchaChallenge.num1} + {captchaChallenge.num2}? <span className="text-rose-500">*</span>
                       </label>
                       <div className="flex items-center space-x-3">
                         <input
+                          id="contact-captcha"
                           type="number"
                           value={formData.captchaAnswer}
                           onChange={(e) => setFormData({ ...formData, captchaAnswer: e.target.value })}

@@ -65,10 +65,11 @@ export default function ProjectEstimator({ onOpenQuote }) {
         <div className="lg:col-span-7 space-y-5">
           {/* Service Selector */}
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
+            <label htmlFor="estimator-service" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
               1. Select Architectural Service
             </label>
             <select
+              id="estimator-service"
               value={selectedService}
               onChange={(e) => setSelectedService(e.target.value)}
               className="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
@@ -84,17 +85,21 @@ export default function ProjectEstimator({ onOpenQuote }) {
           {/* Area Slider */}
           <div>
             <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-              <span>2. Approximate Elevation / Partition Area</span>
+              <label htmlFor="estimator-area">
+                2. Approximate Elevation / Partition Area
+              </label>
               <span className="text-emerald-700 font-bold font-mono text-sm bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
                 {area.toLocaleString()} Sq. Ft.
               </span>
             </div>
             <input
+              id="estimator-area"
               type="range"
               min="200"
               max="10000"
               step="100"
               value={area}
+              aria-label="Approximate area in square feet"
               onChange={(e) => setArea(Number(e.target.value))}
               className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
             />

@@ -516,6 +516,7 @@ export default function Navbar({ onOpenQuote }) {
             <div className="pt-2 border-t border-white/10 space-y-2.5">
               <button
                 type="button"
+                aria-label="Request a free project quotation"
                 onClick={() => {
                   setIsOpen(false);
                   onOpenQuote();

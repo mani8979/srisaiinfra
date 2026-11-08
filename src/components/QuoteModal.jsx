@@ -163,10 +163,11 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               {/* Full Name */}
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                <label htmlFor="quote-name" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                   Full Name <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="quote-name"
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -186,10 +187,11 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
               {/* Phone and Email in 2 columns */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                  <label htmlFor="quote-phone" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                     Phone Number <span className="text-rose-500">*</span>
                   </label>
                   <input
+                    id="quote-phone"
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -207,10 +209,11 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                  <label htmlFor="quote-email" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                     Email Address <span className="text-slate-400 font-normal">(Optional)</span>
                   </label>
                   <input
+                    id="quote-email"
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -230,10 +233,11 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
 
               {/* Service Required Dropdown */}
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                <label htmlFor="quote-service" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                   Service Required <span className="text-rose-500">*</span>
                 </label>
                 <select
+                  id="quote-service"
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                   className="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white transition-all"
@@ -254,10 +258,11 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
 
               {/* Project Details */}
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                <label htmlFor="quote-details" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                   Project Details & Location <span className="text-rose-500">*</span>
                 </label>
                 <textarea
+                  id="quote-details"
                   rows={3}
                   value={formData.details}
                   onChange={(e) => setFormData({ ...formData, details: e.target.value })}

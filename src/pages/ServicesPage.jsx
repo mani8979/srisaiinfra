@@ -10,6 +10,7 @@ import {
   PhoneCall
 } from 'lucide-react';
 import { SERVICES, COMPANY_INFO } from '../data/companyData';
+import ProjectEstimator from '../components/ProjectEstimator';
 
 export default function ServicesPage({ onSelectService, onOpenQuote }) {
   const location = useLocation();
@@ -153,8 +154,13 @@ export default function ServicesPage({ onSelectService, onOpenQuote }) {
             })}
           </div>
 
+          {/* Interactive Project Estimator Tool */}
+          <div className="mt-16">
+            <ProjectEstimator onOpenQuote={onOpenQuote} />
+          </div>
+
           {/* Bottom Banner */}
-          <div className="mt-16 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="mt-12 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-1 text-center md:text-left">
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">
                 Custom Architectural Specifications

@@ -79,7 +79,7 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
               <div className="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm font-medium shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                 <span className="uppercase tracking-wider font-semibold">Established 2017</span>
-                <span className="text-slate-500">&bull;</span>
+                <span className="text-emerald-400/60">&bull;</span>
                 <span className="text-amber-300 font-medium">Motto: &ldquo;{COMPANY_INFO.motto}&rdquo;</span>
               </div>
 
@@ -136,11 +136,17 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
                 
                 {/* Main Large Showcase Frame */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/15 bg-slate-900 group">
-                  <img
-                    src="/projects/image16.png"
-                    alt="Sai Sri Infra Solutions - Best Work Front Elevation"
-                    className="w-full h-72 sm:h-84 md:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                  />
+                  <picture>
+                    <source srcSet="/projects/image16.webp" type="image/webp" />
+                    <img
+                      src="/projects/image16.png"
+                      alt="Sai Sri Infra Solutions - Best Work Front Elevation"
+                      width="966"
+                      height="700"
+                      fetchpriority="high"
+                      className="w-full h-72 sm:h-84 md:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </picture>
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark via-transparent to-transparent opacity-90" />
                   
                   {/* Floating caption on image */}
@@ -199,7 +205,7 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
                 <span className="text-xs sm:text-sm font-bold text-emerald-700 block uppercase tracking-wider">
                   {stat.label}
                 </span>
-                <span className="text-xs text-slate-500 block leading-tight">
+                <span className="text-xs text-slate-600 block leading-tight">
                   {stat.detail}
                 </span>
               </div>
@@ -295,7 +301,7 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
                 <p className="text-base sm:text-lg font-bold text-slate-800 font-heading">
                   &ldquo;Serve All to the BEST&rdquo;
                 </p>
-                <p className="text-xs text-slate-500 mt-0.5">
+                <p className="text-xs text-slate-600 mt-0.5">
                   The foundational motto driving every panel alignment, structural joint, and customer relationship.
                 </p>
               </blockquote>
@@ -339,7 +345,7 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading mt-2">
                 Specialized Architectural Services
               </h2>
-              <p className="text-sm sm:text-base text-slate-500 mt-1 max-w-xl">
+              <p className="text-sm sm:text-base text-slate-600 mt-1 max-w-xl">
                 Engineered front elevations, architectural structural glazing, and aluminium composite panel works executed to precision.
               </p>
             </div>

@@ -11,7 +11,8 @@ import {
   HelpCircle,
   Eye,
   Send,
-  CheckCircle
+  CheckCircle,
+  AlertCircle
 } from 'lucide-react';
 import { COMPANY_INFO, REFERRALS_DATA } from '../data/companyData';
 
@@ -26,15 +27,30 @@ export default function ReferralsPage({ onOpenQuote }) {
     notes: ''
   });
 
+  const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+
+  const validate = () => {
+    const newErrors = {};
+    if (!referralForm.referrerName.trim()) {
+      newErrors.referrerName = 'Your name is required';
+    }
+    const cleanPhone = referralForm.referrerPhone.replace(/[^0-9]/g, '');
+    if (!cleanPhone || cleanPhone.length < 10) {
+      newErrors.referrerPhone = 'Please provide a valid 10-digit mobile number';
+    }
+    if (!referralForm.clientName.trim()) {
+      newErrors.clientName = 'Referred enterprise or client name is required';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!referralForm.referrerName || !referralForm.referrerPhone || !referralForm.clientName) {
-      alert('Please fill in your name, contact phone, and the lead/client details.');
-      return;
+    if (validate()) {
+      setSubmitted(true);
     }
-    setSubmitted(true);
   };
 
   const shareViaWhatsApp = () => {
@@ -235,57 +251,82 @@ export default function ReferralsPage({ onOpenQuote }) {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                    <label htmlFor="ref-name" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                       Your Name <span className="text-rose-500">*</span>
                     </label>
                     <input
+                      id="ref-name"
                       type="text"
-                      required
                       value={referralForm.referrerName}
                       onChange={(e) => setReferralForm({ ...referralForm, referrerName: e.target.value })}
                       placeholder="Your Full Name"
-                      className="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
+                      className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
+                        errors.referrerName ? 'border-rose-400 bg-rose-50/30' : 'border-slate-300'
+                      } focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white`}
                     />
+                    {errors.referrerName && (
+                      <p className="text-xs text-rose-500 mt-1 flex items-center">
+                        <AlertCircle className="w-3.5 h-3.5 mr-1" />
+                        {errors.referrerName}
+                      </p>
+                    )}
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                    <label htmlFor="ref-phone" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                       Your Phone Number <span className="text-rose-500">*</span>
                     </label>
                     <input
+                      id="ref-phone"
                       type="tel"
-                      required
                       value={referralForm.referrerPhone}
                       onChange={(e) => setReferralForm({ ...referralForm, referrerPhone: e.target.value })}
                       placeholder="Your 10-digit Mobile Number"
-                      className="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
+                      className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
+                        errors.referrerPhone ? 'border-rose-400 bg-rose-50/30' : 'border-slate-300'
+                      } focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white`}
                     />
+                    {errors.referrerPhone && (
+                      <p className="text-xs text-rose-500 mt-1 flex items-center">
+                        <AlertCircle className="w-3.5 h-3.5 mr-1" />
+                        {errors.referrerPhone}
+                      </p>
+                    )}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                    <label htmlFor="ref-client-name" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                       Referred Enterprise / Client Name <span className="text-rose-500">*</span>
                     </label>
                     <input
+                      id="ref-client-name"
                       type="text"
-                      required
                       value={referralForm.clientName}
                       onChange={(e) => setReferralForm({ ...referralForm, clientName: e.target.value })}
                       placeholder="Company, Showroom, or Person Name"
-                      className="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
+                      className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
+                        errors.clientName ? 'border-rose-400 bg-rose-50/30' : 'border-slate-300'
+                      } focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white`}
                     />
+                    {errors.clientName && (
+                      <p className="text-xs text-rose-500 mt-1 flex items-center">
+                        <AlertCircle className="w-3.5 h-3.5 mr-1" />
+                        {errors.clientName}
+                      </p>
+                    )}
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                    <label htmlFor="ref-category" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                       Opportunity Category
                     </label>
                     <select
+                      id="ref-category"
                       value={referralForm.projectCategory}
                       onChange={(e) => setReferralForm({ ...referralForm, projectCategory: e.target.value })}
                       className="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
@@ -305,10 +346,11 @@ export default function ReferralsPage({ onOpenQuote }) {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                    <label htmlFor="ref-contact" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                       Client Phone or Email
                     </label>
                     <input
+                      id="ref-contact"
                       type="text"
                       value={referralForm.clientContact}
                       onChange={(e) => setReferralForm({ ...referralForm, clientContact: e.target.value })}
@@ -318,10 +360,11 @@ export default function ReferralsPage({ onOpenQuote }) {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                    <label htmlFor="ref-location" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                       Site City / Location
                     </label>
                     <input
+                      id="ref-location"
                       type="text"
                       value={referralForm.siteLocation}
                       onChange={(e) => setReferralForm({ ...referralForm, siteLocation: e.target.value })}
@@ -332,10 +375,11 @@ export default function ReferralsPage({ onOpenQuote }) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                  <label htmlFor="ref-notes" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                     Additional Notes / Elevation Scope
                   </label>
                   <textarea
+                    id="ref-notes"
                     rows={2}
                     value={referralForm.notes}
                     onChange={(e) => setReferralForm({ ...referralForm, notes: e.target.value })}
