@@ -124,7 +124,7 @@ function MainApp() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-brand-green/20 selection:text-brand-green-dark no-horizontal-overflow">
+    <div className="min-h-screen flex flex-col w-full max-w-full overflow-x-clip bg-brand-navy text-slate-900 selection:bg-brand-green/20 selection:text-brand-green-dark no-horizontal-overflow">
       {/* Skip to Main Content Link for Keyboard and Screen-Reader Users */}
       <a
         href="#main-content"
@@ -139,7 +139,7 @@ function MainApp() {
       <Navbar onOpenQuote={() => handleOpenQuote()} />
 
       {/* Main Routed Page Content with Smooth Fade Out to In Transition */}
-      <main id="main-content" className="flex-1 w-full max-w-full overflow-x-hidden" tabIndex="-1">
+      <main id="main-content" className="flex-1 w-full max-w-full overflow-x-clip" tabIndex="-1">
         <div key={location.pathname} className="page-transition w-full flex-1">
           <Routes location={location}>
             <Route

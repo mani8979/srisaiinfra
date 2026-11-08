@@ -24,13 +24,14 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
     };
+    const originalOverflow = document.body.style.overflow;
     if (isOpen) {
       window.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
     }
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = originalOverflow;
     };
   }, [isOpen, onClose]);
 

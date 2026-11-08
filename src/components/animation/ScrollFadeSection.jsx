@@ -13,6 +13,9 @@ import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'fr
  * - Scrolling upward naturally reverses the transition
  * - For Hero section (isHero=true): Starts at opacity 1, smoothly fades out as user scrolls down
  * - For Last section/Footer (isLast=true): Smoothly fades in, remains visible at the end of the page
+ * 
+ * Responsiveness:
+ * Built with `w-full max-w-full overflow-x-clip` to strictly prevent any horizontal overflow.
  */
 export default function ScrollFadeSection({
   children,
@@ -20,8 +23,8 @@ export default function ScrollFadeSection({
   isHero = false,
   isLast = false,
   fadeExit = true,
-  yOffset = 22,
-  scaleEffect = true,
+  yOffset = 20,
+  scaleEffect = false, // Keep false or subtle on mobile to avoid any overflow or subpixel clipping
   as = 'section',
   id,
   style = {}
@@ -52,10 +55,10 @@ export default function ScrollFadeSection({
   // Calculate transforms based on role
   // 1. Hero section: starts at 1, fades out as user scrolls past
   const heroOpacity = useTransform(smoothProgress, [0, 0.45, 0.95], [1, 1, 0.04]);
-  const heroY = useTransform(smoothProgress, [0, 0.45, 0.95], [0, 0, -28]);
-  const heroScale = useTransform(smoothProgress, [0, 0.45, 0.95], [1, 1, 0.985]);
+  const heroY = useTransform(smoothProgress, [0, 0.45, 0.95], [0, 0, -24]);
+  const heroScale = useTransform(smoothProgress, [0, 0.45, 0.95], [1, 1, 0.99]);
 
-  // 2. Middle section: enters (0->0.2), stays (0.2->0.8), exits (0.8->1.0)
+  // 2. Middle section: enters (0->0.18), stays (0.18->0.82), exits (0.82->1.0)
   const middleOpacityWithExit = useTransform(
     smoothProgress,
     [0, 0.18, 0.82, 1],
@@ -77,13 +80,13 @@ export default function ScrollFadeSection({
   const middleScale = useTransform(
     smoothProgress,
     [0, 0.18, 0.82, 1],
-    [0.985, 1, 1, 0.985]
+    [0.99, 1, 1, 0.99]
   );
 
   // 3. Last section / Footer: enters (0->0.35), stays at 1
   const lastOpacity = useTransform(smoothProgress, [0, 0.35, 1], [0, 1, 1]);
   const lastY = useTransform(smoothProgress, [0, 0.35, 1], [yOffset, 0, 0]);
-  const lastScale = useTransform(smoothProgress, [0, 0.35, 1], [0.985, 1, 1]);
+  const lastScale = useTransform(smoothProgress, [0, 0.35, 1], [0.99, 1, 1]);
 
   // Select appropriate motion values
   let opacity = middleOpacity;
@@ -104,7 +107,7 @@ export default function ScrollFadeSection({
   if (shouldReduceMotion) {
     const Component = as;
     return (
-      <Component id={id} className={className} style={style}>
+      <Component id={id} className={`w-full max-w-full overflow-x-clip ${className}`} style={style}>
         {children}
       </Component>
     );
@@ -116,7 +119,7 @@ export default function ScrollFadeSection({
     <MotionComponent
       ref={containerRef}
       id={id}
-      className={`will-change-[opacity,transform] ${className}`}
+      className={`w-full max-w-full overflow-x-clip will-change-[opacity,transform] ${className}`}
       style={{
         opacity,
         y,

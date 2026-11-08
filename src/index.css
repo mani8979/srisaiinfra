@@ -12,22 +12,34 @@
     --brand-gold-warm: #E6A117;
   }
 
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
     width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #0A192F;
   }
 
   body {
     min-width: 320px;
     max-width: 100%;
     width: 100%;
-    overflow-x: hidden;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: clip;
     position: relative;
-    background-color: #F8FAFC;
+    background-color: #0A192F;
     color: #0F172A;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
@@ -35,13 +47,25 @@
   #root {
     max-width: 100%;
     width: 100%;
-    overflow-x: hidden;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: clip;
     position: relative;
+    background-color: #0A192F;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     letter-spacing: -0.02em;
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+    height: auto;
   }
 }
 

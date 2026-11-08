@@ -46,8 +46,10 @@ export default function ProjectsPage({ onSelectProject, onOpenQuote }) {
         isHero={true}
         className="bg-brand-navy text-white py-14 sm:py-20 relative overflow-hidden border-b border-white/10"
       >
-        <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none" />
-        <div className="absolute top-0 right-0 sm:right-10 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 bg-grid-pattern-dark opacity-30" />
+          <div className="absolute top-0 right-0 sm:right-10 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/20 rounded-full blur-3xl" />
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <ScrollReveal direction="down" delay={0.05}>

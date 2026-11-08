@@ -14,9 +14,11 @@ export default function Footer({ onOpenQuote }) {
       className="bg-brand-navy-dark text-slate-300 border-t border-white/10 relative overflow-hidden"
     >
       {/* Decorative architectural background element */}
-      <div className="absolute inset-0 bg-grid-pattern-dark opacity-40 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-gold/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-grid-pattern-dark opacity-40" />
+        <div className="absolute top-0 right-0 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-gold/5 rounded-full blur-3xl" />
+      </div>
 
       {/* Main Footer Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10 relative z-10">

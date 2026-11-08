@@ -71,9 +71,11 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
         className="relative bg-brand-navy text-white overflow-hidden pt-8 pb-16 sm:py-20 lg:py-24 border-b border-white/10"
       >
         {/* Subtle Architectural Grid & Glow Background */}
-        <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none" />
-        <div className="absolute top-1/4 -right-10 sm:-right-20 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 -left-10 sm:-left-20 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-gold/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 bg-grid-pattern-dark opacity-30" />
+          <div className="absolute top-1/4 -right-10 sm:-right-20 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 -left-10 sm:-left-20 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-gold/10 rounded-full blur-3xl" />
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -465,8 +467,10 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
         as="section"
         className="py-14 sm:py-20 bg-slate-900 text-white relative overflow-hidden border-b border-white/10"
       >
-        <div className="absolute inset-0 bg-grid-pattern-dark opacity-25 pointer-events-none" />
-        <div className="absolute top-0 right-10 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 bg-grid-pattern-dark opacity-25" />
+          <div className="absolute top-0 right-10 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/10 rounded-full blur-3xl" />
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-6 sm:mb-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
@@ -490,42 +494,44 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
         </div>
 
         {/* Marquee & Touch Scroller Container (Scroll normally on the photos) */}
-        <ScrollReveal direction="up" delay={0.15}>
-          <div
-            ref={galleryScrollRef}
-            className="w-full overflow-x-auto no-scrollbar touch-pan-x cursor-grab active:cursor-grabbing pb-2"
-            onMouseDown={handleMouseDown}
-            onMouseLeave={handleMouseLeave}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            onWheel={handleWheelScroll}
-            onTouchStart={() => setIsGalleryPaused(true)}
-            onTouchEnd={() => setTimeout(() => setIsGalleryPaused(false), 2000)}
-            onMouseEnter={() => setIsGalleryPaused(true)}
-          >
+        <div className="w-full max-w-full overflow-hidden">
+          <ScrollReveal direction="up" delay={0.15}>
             <div
-              className={`animate-marquee flex items-center space-x-4 sm:space-x-5 px-4 ${
-                isGalleryPaused ? '[animation-play-state:paused]' : ''
-              }`}
+              ref={galleryScrollRef}
+              className="w-full overflow-x-auto no-scrollbar touch-pan-x cursor-grab active:cursor-grabbing pb-2"
+              onMouseDown={handleMouseDown}
+              onMouseLeave={handleMouseLeave}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              onWheel={handleWheelScroll}
+              onTouchStart={() => setIsGalleryPaused(true)}
+              onTouchEnd={() => setTimeout(() => setIsGalleryPaused(false), 2000)}
+              onMouseEnter={() => setIsGalleryPaused(true)}
             >
-              {[...PROJECTS, ...PROJECTS].map((project, idx) => (
-                <div
-                  key={`${project.id}-${idx}`}
-                  onClick={() => onSelectProject(project)}
-                  className="w-72 sm:w-84 md:w-96 h-52 sm:h-60 md:h-68 shrink-0 rounded-2xl overflow-hidden bg-slate-800 border border-white/10 relative group cursor-pointer shadow-lg hover:shadow-2xl hover:border-emerald-400/60 transition-all duration-300 select-none"
-                >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out select-none pointer-events-none"
-                    loading="lazy"
-                    draggable="false"
-                  />
-                </div>
-              ))}
+              <div
+                className={`animate-marquee flex items-center space-x-4 sm:space-x-5 px-4 ${
+                  isGalleryPaused ? '[animation-play-state:paused]' : ''
+                }`}
+              >
+                {[...PROJECTS, ...PROJECTS].map((project, idx) => (
+                  <div
+                    key={`${project.id}-${idx}`}
+                    onClick={() => onSelectProject(project)}
+                    className="w-72 sm:w-84 md:w-96 h-52 sm:h-60 md:h-68 shrink-0 rounded-2xl overflow-hidden bg-slate-800 border border-white/10 relative group cursor-pointer shadow-lg hover:shadow-2xl hover:border-emerald-400/60 transition-all duration-300 select-none"
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out select-none pointer-events-none"
+                      loading="lazy"
+                      draggable="false"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
+        </div>
 
         {/* Bottom gallery guidance */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 text-center">

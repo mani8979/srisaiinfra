@@ -24,8 +24,10 @@ export default function AboutPage({ onOpenQuote }) {
         isHero={true}
         className="bg-brand-navy text-white py-14 sm:py-20 relative overflow-hidden border-b border-white/10"
       >
-        <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none" />
-        <div className="absolute -top-24 right-0 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 bg-grid-pattern-dark opacity-30" />
+          <div className="absolute -top-24 right-0 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-brand-green/20 rounded-full blur-3xl" />
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <ScrollReveal direction="down" delay={0.05}>
@@ -192,7 +194,7 @@ export default function AboutPage({ onOpenQuote }) {
                   </div>
 
                   {/* Card Content */}
-                  <div className="ml-12 sm:ml-0 sm:w-1/2 sm:px-6">
+                  <div className="ml-12 sm:ml-0 w-[calc(100%-3rem)] sm:w-1/2 sm:px-6">
                     <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md border border-slate-200 transition-all card-hover-lift">
                       <span className="inline-block px-2.5 py-0.5 text-xs font-bold rounded-full bg-emerald-100 text-emerald-800 mb-2">
                         {step.year}
