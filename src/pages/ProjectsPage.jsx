@@ -20,7 +20,9 @@ export default function ProjectsPage({ onSelectProject, onOpenQuote }) {
   const filteredProjects = selectedCategory === "All Projects"
     ? PROJECTS
     : PROJECTS.filter((p) => {
-        if (selectedCategory === "Best Works") return p.category === "Best Works";
+        if (selectedCategory === "Best Elevation Works" || selectedCategory === "Best Works") {
+          return p.category === "Best Elevation Works" || p.category === "Best Works";
+        }
         if (selectedCategory === "ACP Sheet Fixing") return p.category === "ACP Sheet Fixing";
         if (selectedCategory === "ACP & Aluminium Louvers") return p.category === "ACP & Aluminium Louvers";
         if (selectedCategory === "Aluminium Partitioning") return p.category === "Aluminium Partitioning";

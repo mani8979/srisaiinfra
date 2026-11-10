@@ -90,26 +90,26 @@ export const PROJECTS = [
   {
     id: 1,
     title: "Commercial Glass & ACP Elevation",
-    category: "Best Works",
+    category: "Best Elevation Works",
     image: "/projects/image16.webp",
     caption: "Multi-tier commercial building featuring structural glass curtain walling and modern ACP cladding.",
-    slideRef: "Slide 11 (Best Works)"
+    slideRef: "Slide 11 (Best Elevation Works)"
   },
   {
     id: 2,
     title: "Architectural Showroom Facade",
-    category: "Best Works",
+    category: "Best Elevation Works",
     image: "/projects/image17.webp",
     caption: "Distinctive corner commercial elevation with premium ACP sheet framing and expansive glass facade.",
-    slideRef: "Slide 12 (Best Works)"
+    slideRef: "Slide 12 (Best Elevation Works)"
   },
   {
     id: 3,
     title: "Integrated Elevation & Louver Complex",
-    category: "Best Works",
+    category: "Best Elevation Works",
     image: "/projects/image18.webp",
     caption: "Panoramic commercial facade incorporating aluminium louvers, front glass fixing, and architectural ACP panels.",
-    slideRef: "Slide 13 (Best Works)"
+    slideRef: "Slide 13 (Best Elevation Works)"
   },
   {
     id: 4,
@@ -267,7 +267,7 @@ export const PROJECTS = [
 
 export const PROJECT_CATEGORIES = [
   "All Projects",
-  "Best Works",
+  "Best Elevation Works",
   "ACP Sheet Fixing",
   "ACP & Aluminium Louvers",
   "Aluminium Partitioning",

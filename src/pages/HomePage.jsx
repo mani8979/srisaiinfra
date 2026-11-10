@@ -20,7 +20,7 @@ import { COMPANY_INFO, SERVICES, PROJECTS, REFERRALS_DATA } from '../data/compan
 import { ScrollFadeSection, ScrollReveal, StaggerContainer, StaggerItem } from '../components/animation';
 
 export default function HomePage({ onOpenQuote, onSelectProject, onSelectService }) {
-  const featuredProjects = PROJECTS.filter(p => p.category === "Best Works").slice(0, 3);
+  const featuredProjects = PROJECTS.filter(p => p.category === "Best Elevation Works" || p.category === "Best Works").slice(0, 3);
   const featuredServices = SERVICES.slice(0, 6);
   const galleryScrollRef = useRef(null);
   const [isGalleryPaused, setIsGalleryPaused] = useState(false);
@@ -541,7 +541,7 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
         </div>
       </ScrollFadeSection>
 
-      {/* 5. BEST WORKS SHOWCASE */}
+      {/* 5. BEST ELEVATION WORKS SHOWCASE */}
       <ScrollFadeSection
         as="section"
         className="py-16 sm:py-20 bg-brand-navy text-white relative overflow-hidden"
@@ -554,7 +554,7 @@ export default function HomePage({ onOpenQuote, onSelectProject, onSelectService
               Verified Project Showcase
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-heading text-white mt-3">
-              Best Architectural Works
+              Best Elevation Works
             </h2>
             <p className="text-sm sm:text-base text-slate-300 mt-1">
               Genuine commercial front elevations, structural glazing, and exterior ACP panel installations directly from our portfolio.
